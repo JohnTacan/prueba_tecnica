@@ -1,0 +1,21 @@
+<h2>Vehículos</h2>
+<ul>
+  <li *ngFor="let vehiculo of vehiculos">
+    {{ vehiculo.placa }} - {{ vehiculo.tipo }} - {{ vehiculo.kilometraje }} - {{ vehiculo.estado }} - {{ vehiculo.nombre_propietario }}
+  </li>
+</ul>
+
+<h3>Crear Vehículo</h3>
+<form (ngSubmit)="createVehiculo()">
+  <label for="placa">Placa:</label>
+  <input type="text" id="placa" [(ngModel)]="newVehiculo.placa" name="placa">
+  <label for="tipo">Tipo:</label>
+  <input type="text" id="tipo" [(ngModel)]="newVehiculo.tipo" name="tipo">
+  <label for="kilometraje">Kilometraje:</label>
+  <input type="number" id="kilometraje" [(ngModel)]="newVehiculo.kilometraje" name="kilometraje">
+  <label for="estado">Estado:</label>
+  <input type="text" id="estado" [(ngModel)]="newVehiculo.estado" name="estado">
+  <label for="nombre_propietario">Propietario:</label>
+  <input type="text" id="nombre_propietario" [(ngModel)]="newVehiculo.nombre_propietario" name="nombre_propietario">
+  <button type="submit">Crear Vehículo</button>
+</form>

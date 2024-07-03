@@ -1,0 +1,36 @@
+<h2>Órdenes de Servicio</h2>
+<ul>
+  <li *ngFor="let orden of ordenes">
+    {{ orden.fecha }} - {{ orden.tipo }} - {{ orden.vehiculoId }}
+    <button (click)="startEditOrden(orden)">Editar</button>
+    <button (click)="deleteItemOrden(orden.id)">Eliminar</button>
+    <ul>
+      <li *ngFor="let item of orden.items">
+        {{ item.descripcion }} - {{ item.cantidad }} - {{ item.valor_unitario }}
+        <button (click)="deleteItemOrden(item.id)">Eliminar Ítem</button>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3>Crear Orden</h3>
+<form (ngSubmit)="createOrden()">
+  <label for="fecha">Fecha:</label>
+  <input type="date" id="fecha" [(ngModel)]="newOrden.fecha" name="fecha">
+  <label for="tipo">Tipo:</label>
+  <input type="text" id="tipo" [(ngModel)]="newOrden.tipo" name="tipo">
+  <label for="vehiculoId">Vehículo ID:</label>
+  <input type="number" id="vehiculoId" [(ngModel)]="newOrden.vehiculoId" name="vehiculoId">
+  <button type="submit">Crear Orden</button>
+</form>
+
+<h3>Editar Orden</h3>
+<form *ngIf="editOrdenData.id" (ngSubmit)="saveEditOrden()">
+  <label for="editFecha">Fecha:</label>
+  <input type="date" id="editFecha" [(ngModel)]="editOrdenData.fecha" name="editFecha">
+  <label for="editTipo">Tipo:</label>
+  <input type="text" id="editTipo" [(ngModel)]="editOrdenData.tipo" name="editTipo">
+  <label for="editVehiculoId">Vehículo ID:</label>
+  <input type="number" id="editVehiculoId" [(ngModel)]="editOrdenData.vehiculoId" name="editVehiculoId">
+  <button type="submit">Guardar Cambios</button>
+</form>
